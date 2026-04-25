@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ফ্রি প্রক্সি জেনারেটর | Proxy Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌐 ফ্রি প্রক্সি জেনারেটর</h1>
+            <p>Google Sheets থেকে অটোমেটিক প্রক্সি সংগ্রহ করুন</p>
+        </header>
+
+        <div class="controls">
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="free">
+                    🆓 ফ্রি প্রক্সি
+                </button>
+                <button class="mode-btn" data-mode="standard">
+                    📋 স্ট্যান্ডার্ড প্রক্সি
+                </button>
+            </div>
+
+            <div class="country-filters">
+                <h3>🌍 দেশ অনুযায়ী ফিল্টার:</h3>
+                <div class="checkbox-group" id="countryCheckboxes">
+                    <!-- Dynamic checkboxes will be added here -->
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="generateBtn" class="generate-btn">
+                    ⚡ প্রক্সি জেনারেট করুন
+                </button>
+                <button id="downloadProxyBtn" class="download-btn" disabled>
+                    📥 proxy.txt ডাউনলোড
+                </button>
+                <button id="downloadTestBtn" class="download-btn" disabled>
+                    🧪 proxytest.txt ডাউনলোড
+                </button>
+                <button id="copyAllBtn" class="copy-btn" disabled>
+                    📋 সব কপি করুন
+                </button>
+            </div>
+        </div>
+
+        <div class="status-bar">
+            <div class="progress" id="progressBar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span id="statusText">প্রস্তুত...</span>
+        </div>
+
+        <div class="results">
+            <div class="result-tabs">
+                <button class="tab-btn active" data-tab="proxy">Proxy List</button>
+                <button class="tab-btn" data-tab="test">Test Results</button>
+                <button class="tab-btn" data-tab="stats">📊 পরিসংখ্যান</button>
+            </div>
+
+            <div class="tab-content active" id="proxyTab">
+                <textarea id="proxyOutput" readonly placeholder="এখানে proxy.txt এর কন্টেন্ট দেখাবে..."></textarea>
+                <div class="proxy-count" id="proxyCount">0 টি প্রক্সি</div>
+            </div>
+
+            <div class="tab-content" id="testTab">
+                <textarea id="testOutput" readonly placeholder="এখানে proxytest.txt এর কন্টেন্ট দেখাবে..."></textarea>
+                <div class="test-summary" id="testSummary"></div>
+            </div>
+
+            <div class="tab-content" id="statsTab">
+                <div class="stats-grid" id="statsGrid">
+                    <div class="stat-card">
+                        <h4>📊 টোটাল প্রক্সি</h4>
+                        <p id="totalProxies">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>✅ ওয়ার্কিং</h4>
+                        <p id="workingProxies">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>🌍 দেশ</h4>
+                        <p id="countryCount">0</p>
+                    </div>
+                </div>
+                <div id="countryStats"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>⚡ ফ্রি প্রক্সি জেনারেটর | <span id="lastUpdate"></span></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
